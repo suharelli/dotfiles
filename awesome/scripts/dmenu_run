@@ -10,12 +10,10 @@ test -n "$INPUT"
 case "$INPUT" in
     chrome)
         CMD="chromium --disk-cache-dir=/tmp/cache" ;;
-    vi)
-	CMD="urxvt -e nvim" ;;
     morrowind)
 	CMD="openmw-launcher" ;;
     nnn)
-        CMD="urxvt -e nnn" ;;
+        CMD="alacritty -e nnn" ;;
     *)
         CMD="$INPUT" ;;
 esac

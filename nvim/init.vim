@@ -30,6 +30,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
+Plug 'stephpy/vim-php-cs-fixer'
 call plug#end()
 
 
@@ -96,3 +97,7 @@ let g:tagbar_position = 'right'
 
 let g:NERDTreeStatusline = ''
 let g:NERDTreeMinimalUI = 1
+
+nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
+autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
+

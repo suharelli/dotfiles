@@ -7,11 +7,11 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
-local themes_path = "/home/cyrax/.config/awesome/themes/coolone/"
+local themes_path = "~/.config/awesome/themes/coolone/"
 
 local theme = {}
 
-theme.font          = "liberation 12"
+theme.font          = "Hack NF 12"
 
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#535d6c"
@@ -124,12 +124,13 @@ theme.awesome_icon = theme_assets.awesome_icon(
 
 theme.gentoo_icon = themes_path.."images/gentoo-signet.svg"
 
-theme.chrome_icon           = "/usr/share/icons/hicolor/128x128/apps/chromium-browser.png"
+theme.browser_icon           = "/usr/share/icons/hicolor/scalable/apps/qutebrowser.svg"
+theme.brave_icon        = "/usr/share/icons/hicolor/128x128/apps/brave-bin.png"
 theme.tg_icon           = "/usr/share/icons/hicolor/128x128/apps/telegram.png"
 theme.vlc_icon           = "/usr/share/icons/hicolor/128x128/apps/vlc.png"
 theme.steam_icon           = "/usr/share/icons/hicolor/256x256/apps/steam.png"
 theme.subl_icon           = "/usr/share/icons/hicolor/128x128/apps/subl.png"
-theme.vscode_icon = "/usr/share/pixmaps/visual-studio-code.png"
+theme.vscode_icon = "/usr/share/pixmaps/vscode.png"
 theme.idea_icon = "/usr/share/pixmaps/idea-community.png"
 theme.deluge_icon = "/usr/share/icons/hicolor/128x128/apps/deluge.png"
 

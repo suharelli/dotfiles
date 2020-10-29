@@ -42,11 +42,11 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/cyrax/.config/awesome/themes/coolone/theme.lua")
+beautiful.init("~/.config/awesome/themes/coolone/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
-browser = "chromium --disk-cache-dir=/tmp/cache"
+browser = "qutebrowser"
 editor = "nvim"
 terminal_run = terminal .. " -e "
 editor_cmd = terminal .. " -e " .. editor
@@ -105,18 +105,19 @@ myawesomemenu = {
 }
 
 internetmenu = {
-  { "Chrome", browser, beautiful.chrome_icon },
+  { "Qutebrowser", browser, beautiful.browser_icon },
+  {"Brave brower", "brave-bin", beautiful.brave_icon },
   { "Telegram", "telegram-desktop", beautiful.tg_icon },
-  { "Torrents", "Deluge", beautiful.deluge_icon }
+  { "Deluge", "Deluge", beautiful.deluge_icon }
 }
 
 editorsmenu = {
     { "Sublime Text", editor, beautiful.subl_icon },
-    { "Visual Studio Code", "visual-studio-code", beautiful.vscode_icon },
+    { "Visual Studio Code", "vscode", beautiful.vscode_icon },
     { "Idea", "idea-community", beautiful.idea_icon }
 }
 
-mymainmenu = awful.menu({ items = { { "Internets", internetmenu, beautiful.chrome_icon },
+mymainmenu = awful.menu({ items = { { "Internets", internetmenu, beautiful.browser_icon },
                                     { "Editors", editorsmenu, beautiful.subl_icon },
                                     { "Vlc", "vlc", beautiful.vlc_icon },
                                     { "Steam", "steam", beautiful.steam_icon },
@@ -536,10 +537,6 @@ awful.rules.rules = {
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false }
     },
-
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
 
     { rule = { class = "Steam" },
       properties = { screen = 1, tag = "steam" } },

@@ -11,7 +11,7 @@ local themes_path = "~/.config/awesome/themes/coolone/"
 
 local theme = {}
 
-theme.font          = "Hack NF 12"
+theme.font          = "Liberation Mono 12"
 
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#535d6c"

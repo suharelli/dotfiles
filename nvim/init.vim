@@ -32,94 +32,17 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
-Plug 'stephpy/vim-php-cs-fixer'
+Plug 'stephpy/vim-php-cs-fixer', { 'for': 'php'}
 call plug#end()
 
-" Coc configuration
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-set <F8>=<C-v><F8>
-nmap <F8> :NERDTreeToggle<CR>
-
+" remap leader to space
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-" Formatting selected code.
-xmap <leader>f <Plug>(coc-format-selected)
-nmap <leader>f <Plug>(coc-format-selected)
-nmap <leader>rr <Plug>(coc-rename)
-
-nmap <leader>tb :TagbarToggle<CR>
-
-" split shortcuts
-nmap <leader>v :vsp<CR>
-nmap <leader>s :sp<CR>
-
-" move selected lines up and down
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
-" ctrlp
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_extensions = ['branch', 'coc', 'ctrlp', 'fzf', 'keymap', 'tabline', 'tagbar']
-let g:airline_powerline_fonts = 1
-
-nmap <C-_> <plug>NERDCommenterToggle
-let g:NERDSpaceDelims = 1
-
-if !has('gui_running')
-    set t_Co=256
-endif
+" load plugin specific configuration files
+runtime! plugins.d/*.vim
+" load custom key bindings
+runtime shortcuts.vim
 
 color dracula
-let g:airline_theme='lucius'
-
-let g:tagbar_position = 'right'
-
-let g:NERDTreeStatusline = ''
-let g:NERDTreeMinimalUI = 1
-
-nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
-autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
 

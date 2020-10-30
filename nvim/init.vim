@@ -32,7 +32,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
-Plug 'stephpy/vim-php-cs-fixer', { 'for': 'php'}
+Plug 'stephpy/vim-php-cs-fixer'
 call plug#end()
 
 " remap leader to space

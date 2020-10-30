@@ -31,6 +31,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
 Plug 'stephpy/vim-php-cs-fixer'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 " remap leader to space

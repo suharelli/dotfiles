@@ -12,7 +12,6 @@ set smarttab
 set noshowmode
 set showmatch
 set hlsearch
-set cmdheight=2
 set updatetime=300
 syntax on
 
@@ -26,8 +25,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'suharelli/vim-buftabline'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'

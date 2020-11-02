@@ -45,3 +45,9 @@ runtime shortcuts.vim
 
 color dracula
 
+" make terminal buffer stay hidden
+augroup custom_term
+    autocmd!
+    autocmd TermOpen * setlocal bufhidden=hide
+augroup END
+

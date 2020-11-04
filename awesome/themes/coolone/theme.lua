@@ -7,6 +7,7 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
+local gc = require("gears.color")
 local themes_path = "~/.config/awesome/themes/coolone/"
 
 local theme = {}
@@ -134,10 +135,22 @@ theme.vscode_icon = "/usr/share/pixmaps/vscode.png"
 theme.idea_icon = "/usr/share/pixmaps/idea-community.png"
 theme.deluge_icon = "/usr/share/icons/hicolor/128x128/apps/deluge.png"
 
+theme.tagicons = {}
+
+local icons_path = "/usr/share/icons/Adwaita/64x64/"
+local recolor_icons = "#ffffff"
+theme.tagicons.main = gc.recolor_image(icons_path.."places/user-home-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.steam = gc.recolor_image(icons_path.."categories/applications-games-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.editors = gc.recolor_image(icons_path.."apps/text-editor-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.im = gc.recolor_image(icons_path.."status/user-invisible-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.im = gc.recolor_image(icons_path.."actions/mail-send-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.misc = gc.recolor_image(icons_path.."apps/utilities-terminal-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.workspace = gc.recolor_image(icons_path.."apps/accessories-calculator-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.torrents = gc.recolor_image(icons_path.."emblems/emblem-shared-symbolic.symbolic.png", recolor_icons)
+
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
 
 return theme
 
--- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80

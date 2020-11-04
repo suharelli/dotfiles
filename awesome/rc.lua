@@ -94,40 +94,6 @@ local function client_menu_toggle_fn()
 end
 -- }}}
 
--- {{{ Menu
--- Create a launcher widget and a main menu
-myawesomemenu = {
-   { "hotkeys", function() return false, hotkeys_popup.show_help end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end }
-}
-
-internetmenu = {
-  { "Qutebrowser", browser, beautiful.browser_icon },
-  {"Brave brower", "brave-bin", beautiful.brave_icon },
-  { "Telegram", "telegram-desktop", beautiful.tg_icon },
-  { "Deluge", "Deluge", beautiful.deluge_icon }
-}
-
-editorsmenu = {
-    { "Sublime Text", editor, beautiful.subl_icon },
-    { "Visual Studio Code", "vscode", beautiful.vscode_icon },
-    { "Idea", "idea-community", beautiful.idea_icon }
-}
-
-mymainmenu = awful.menu({ items = { { "Internets", internetmenu, beautiful.browser_icon },
-                                    { "Editors", editorsmenu, beautiful.subl_icon },
-                                    { "Vlc", "vlc", beautiful.vlc_icon },
-                                    { "Steam", "steam", beautiful.steam_icon },
-                                    { "awesome", myawesomemenu, beautiful.awesome_icon }
-                                  }
-                        })
-
-mylauncher = awful.widget.launcher({ image = beautiful.gentoo_icon,
-                                     menu = mymainmenu })
-
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
@@ -203,32 +169,34 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+local mytags = {}
+mytags[1] = {
+    {name = "main", layout = awful.layout.suit.floating, icon = beautiful.tagicons.main, icon_only = true},
+    {name = "steam", layout = awful.layout.suit.tile, icon = beautiful.tagicons.steam, icon_only = true},
+    {name = "editors", layout = awful.layout.suit.tile.bottom, icon = beautiful.tagicons.editors, icon_only = true},
+    {name = "im", layout = awful.layout.suit.tile.left, icon = beautiful.tagicons.im, icon_only = true},
+    {name = "misc", layout = awful.layout.suit.tile, icon = beautiful.tagicons.misc, icon_only = true},
+    {name = "workspace", layout = awful.layout.suit.tile, icon = beautiful.tagicons.workspace, icon_only = true},
+    {name = "torrents", layout = awful.layout.suit.tile, icon = beautiful.tagicons.torrents, icon_only = true},
+}
+
+local tags = {}
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    if (s.index == 1) then
-      awful.tag(
-      { "main", "steam", "editors", "im", "misc", "workspace", "torrents"},
-      s,
-      {
-        awful.layout.layouts[1],
-        awful.layout.layouts[2],
-        awful.layout.layouts[4],
-        awful.layout.layouts[3],
-        awful.layout.layouts[2],
-        awful.layout.layouts[2],
-        awful.layout.layouts[2]
-      }
-    )
-    else
-      awful.tag(
-      { "1", "2", "3", "torrents"},
-      s,
-      awful.layout.layouts[2]
-    )
+    tags[s.index] = {}
+    for i,p in ipairs(mytags[s.index]) do
+        local props = {}
+        props.screen = s
+        for k,v in pairs(p) do
+            props[k] = v
+        end
+        tags[s.index][i] = awful.tag.add(p.name, props)
     end
+    tags[s.index][1].selected = true
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -240,40 +208,91 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 3, function () awful.layout.inc(-1) end),
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+    
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+    s.mytaglist = awful.widget.taglist{
+        screen = s,
+        filter = awful.widget.taglist.filter.all,
+        buttons = taglist_buttons,
+        layout = wibox.layout.fixed.vertical,
+        widget_template = { 
+          {
+            {
+              {
+                id = 'icon_role',
+                widget = wibox.widget.imagebox,
+              },
+              widget  = wibox.container.margin,
+              margins = 8,
+            },
+            {
+              id = 'text_role',
+              widget = wibox.widget.textbox,
+            },
+            widget = wibox.container.margin,
+            layout = wibox.layout.fixed.horizontal,
+            forced_width = tag_width,
+          }, 
+          id = 'background_role',
+          widget = wibox.container.background,
+        }
+    }
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
+    s.mytasklist = awful.widget.tasklist{
+        screen = s,
+        filter = awful.widget.tasklist.filter.currenttags,
+        buttons = tasklist_buttons,
+        layout   = {
+          layout  = wibox.layout.fixed.vertical
+        },
+        widget_template = {
+          {
+            wibox.widget.base.make_widget(),
+            forced_width = 5,
+            id            = 'background_role',
+            widget        = wibox.container.background,
+          },
+          {
+            {
+                id     = 'clienticon',
+                widget = awful.widget.clienticon,
+            },
+            margins = 8,
+            widget  = wibox.container.margin
+          },
+          create_callback = function(self, c, index, objects) --luacheck: no unused args
+            self:get_children_by_id('clienticon')[1].client = c
+          end,
+          layout = wibox.layout.align.horizontal,
+        },
+    }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "bottom", screen = s })
+    s.mywibox = awful.wibar({ position = "left", screen = s, width = 52 })
+
+    -- Create systray
+    local tray = wibox.widget.systray()
+    tray.set_horizontal(false)
 
     -- Add widgets to the wibox
     s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
+        layout = wibox.layout.align.vertical,
         { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            mylauncher,
+            layout = wibox.layout.fixed.vertical,
             s.mytaglist,
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
+            layout = wibox.layout.fixed.vertical,
             mykeyboardlayout,
-            wibox.widget.systray(),
+            tray,
             mytextclock,
             s.mylayoutbox,
         },
     }
 end)
--- }}}
-
--- {{{ Mouse bindings
-root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end)
-))
 -- }}}
 
 -- {{{ Key bindings
@@ -355,7 +374,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "s", function () awful.spawn(terminal_run .. "speedtest")      end,
               {description = "File manager", group = "client"}),
 
-    awful.key({ modkey, "Shift"   }, "p", function () awful.spawn("scrot '%Y-%m-%d_%h%M%S-$wx$h.png' -u -e 'mv $f /home/cyrax/screenshots'")    end,
+    awful.key({ modkey, "Shift"   }, "p", function () awful.spawn("scrot '%Y-%m-%d_%H:%M:%S_$wx$h.png' -u -e 'mv $f /home/cyrax/screenshots'")    end,
               {description = "Take screenshot", group = "client"}),
 
     awful.key({ modkey, "Control" }, "n",

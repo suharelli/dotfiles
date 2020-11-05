@@ -123,18 +123,6 @@ theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
 )
 
-theme.gentoo_icon = themes_path.."images/gentoo-signet.svg"
-
-theme.browser_icon           = "/usr/share/icons/hicolor/scalable/apps/qutebrowser.svg"
-theme.brave_icon        = "/usr/share/icons/hicolor/128x128/apps/brave-bin.png"
-theme.tg_icon           = "/usr/share/icons/hicolor/128x128/apps/telegram.png"
-theme.vlc_icon           = "/usr/share/icons/hicolor/128x128/apps/vlc.png"
-theme.steam_icon           = "/usr/share/icons/hicolor/256x256/apps/steam.png"
-theme.subl_icon           = "/usr/share/icons/hicolor/128x128/apps/subl.png"
-theme.vscode_icon = "/usr/share/pixmaps/vscode.png"
-theme.idea_icon = "/usr/share/pixmaps/idea-community.png"
-theme.deluge_icon = "/usr/share/icons/hicolor/128x128/apps/deluge.png"
-
 theme.tagicons = {}
 
 local icons_path = "/usr/share/icons/Adwaita/64x64/"
@@ -151,6 +139,8 @@ theme.tagicons.torrents = gc.recolor_image(icons_path.."emblems/emblem-shared-sy
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
+
+theme.systray_icon_spacing = 4
 
 return theme
 

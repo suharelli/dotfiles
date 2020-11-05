@@ -277,7 +277,7 @@ awful.screen.connect_for_each_screen(function(s)
                 id     = 'clienticon',
                 widget = awful.widget.clienticon,
             },
-            margins = 8,
+            margins = 4,
             widget  = wibox.container.margin
           },
           create_callback = function(self, c, index, objects) --luacheck: no unused args
@@ -306,7 +306,11 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.vertical,
             mykeyboardlayout,
-            s.tray,
+            {
+                s.tray,
+                widget = wibox.container.margin,
+                margins = 4,
+            },
             mytextclock,
             s.mylayoutbox,
         },

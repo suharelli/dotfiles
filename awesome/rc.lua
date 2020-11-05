@@ -11,6 +11,7 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local lain = require("lain")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local mywidgets = require("mywidgets")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -202,7 +203,25 @@ awful.screen.connect_for_each_screen(function(s)
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
-    s.mylayoutbox = awful.widget.layoutbox(s)
+    -- mywidgets is a temporary solution, I should create a pull request to awesome itself
+    s.mylayoutbox = mywidgets.layoutbox{
+        screen = s,
+        widget_template = {
+            {
+                {
+                    id = 'imagebox',
+                    widget = wibox.widget.imagebox,
+                },
+                widget = wibox.container.margin,
+                margins = 4,
+            },
+            {
+                id     = "textbox",
+                widget = wibox.widget.textbox
+            },
+            layout = wibox.layout.fixed.horizontal
+        }
+    }
     s.mylayoutbox:buttons(gears.table.join(
                            awful.button({ }, 1, function () awful.layout.inc( 1) end),
                            awful.button({ }, 3, function () awful.layout.inc(-1) end),
@@ -272,8 +291,8 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibox = awful.wibar({ position = "left", screen = s, width = 52 })
 
     -- Create systray
-    local tray = wibox.widget.systray()
-    tray.set_horizontal(false)
+    s.tray = wibox.widget.systray()
+    s.tray.set_horizontal(false)
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -287,7 +306,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.vertical,
             mykeyboardlayout,
-            tray,
+            s.tray,
             mytextclock,
             s.mylayoutbox,
         },

@@ -407,7 +407,14 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "s", function () awful.spawn(terminal_run .. "speedtest")      end,
               {description = "File manager", group = "client"}),
 
-    awful.key({ modkey, "Shift"   }, "p", function () awful.spawn("scrot '%Y-%m-%d_%H:%M:%S_$wx$h.png' -u -e 'mv $f /home/cyrax/screenshots'")    end,
+    awful.key({ modkey, "Shift"   }, "p", function ()
+        awful.util.spawn_with_shell("FILE=" .. os.getenv("HOME") .. "/screenshots/snapshot-$(date +%Y-%m-%dT%H-%M-%S).png && maim -i $(xdotool getactivewindow) --hidecursor $FILE && xclip -selection clipboard $FILE -t image/png")
+      end,
+              {description = "Take screenshot", group = "client"}),
+    awful.key({ modkey, "Control"   }, "p",
+      function ()
+        awful.util.spawn_with_shell("FILE=" .. os.getenv("HOME") .. "/screenshots/snapshot-$(date +%Y-%m-%dT%H-%M-%S).png && maim -s --hidecursor $FILE && xclip -selection clipboard $FILE -t image/png")
+      end,
               {description = "Take screenshot", group = "client"}),
 
     awful.key({ modkey, "Control" }, "n",

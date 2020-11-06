@@ -282,6 +282,17 @@ awful.screen.connect_for_each_screen(function(s)
           },
           create_callback = function(self, c, index, objects) --luacheck: no unused args
             self:get_children_by_id('clienticon')[1].client = c
+            
+            local tooltip = awful.tooltip({
+                objects = { self },
+                delay_show = 0.2,
+                timer_function = function()
+                  return c.name
+                end,
+            })
+            tooltip.align = "right"
+            tooltip.mode = "outside"
+            tooltip.preferred_positions = {"right"}
           end,
           layout = wibox.layout.align.horizontal,
         },

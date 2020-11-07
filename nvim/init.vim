@@ -32,6 +32,7 @@ Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
 Plug 'stephpy/vim-php-cs-fixer'
 Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 " remap leader to space

@@ -1,6 +1,11 @@
 ---------------------------------------------------------------------------
 --- Display the current client layout (`awful.layout`) icon or name.
---- Forked from awesome's layoutbox
+--
+-- @DOC_awful_widget_layoutbox_default_EXAMPLE@
+--
+-- @author Julien Danjou &lt;julien@danjou.info&gt;
+-- @copyright 2009 Julien Danjou
+-- @widgetmod awful.widget.layoutbox
 ---------------------------------------------------------------------------
 
 local setmetatable = setmetatable
@@ -21,29 +26,17 @@ local layoutbox = { mt = {} }
 
 local boxes = nil
 
-local function update(w, screen)
-    screen = get_screen(screen)
-    local name = layout.getname(layout.get(screen))
-    w._layoutbox_tooltip:set_text(name or "[no name]")
-
-    local img = surface.load_silently(beautiful["layout_" .. name], false)
-    w:get_children_by_id("imagebox")[1].image = img
-    w:get_children_by_id("textbox")[1].text = img and "" or name
-end
-
-local function update_from_tag(t)
-    local screen = get_screen(t.screen)
-    local w = boxes[screen]
-    if w then
-        update(w, screen)
-    end
-end
-
 --- Create a layoutbox widget. It draws a picture with the current layout
--- symbol of the current tag.
+-- symbol of the current tag. The last two arguments (widget_template and
+-- update_function) serve to customize the layout of the layoutbox.
+-- By default your widget_template should contain textbox with id 'textbox'
+-- and imagebox with id 'imagebox'. If that is not enough you can pass your
+-- own update_function to manipulate your custom template the way you want.
 -- @tparam table args The arguments.
 -- @tparam screen args.screen The screen number that the layout will be represented for.
 -- @tparam table args.buttons The `awful.button`s for this layoutbox.
+-- @tparam table args.widget_template A custom widget to be used for each layout
+-- @tparam function args.update_function Function to create a layout widget on each update.
 -- @return The layoutbox.
 function layoutbox.new(args)
     args = args or {}
@@ -61,6 +54,24 @@ function layoutbox.new(args)
     assert(type(args) == "table")
 
     screen = get_screen(screen or 1)
+
+    local update = args.update_function or function(w, screen)
+        screen = get_screen(screen)
+        local name = layout.getname(layout.get(screen))
+        w._layoutbox_tooltip:set_text(name or "[no name]")
+
+        local img = surface.load_silently(beautiful["layout_" .. name], false)
+        w:get_children_by_id("imagebox")[1].image = img
+        w:get_children_by_id("textbox")[1].text = img and "" or name
+    end
+
+    local function update_from_tag(t)
+        local screen = get_screen(t.screen)
+        local w = boxes[screen]
+        if w then
+            update(w, screen)
+        end
+    end
 
     -- Do we already have the update callbacks registered?
     if boxes == nil then
@@ -116,3 +127,4 @@ end
 
 return setmetatable(layoutbox, layoutbox.mt)
 
+-- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80

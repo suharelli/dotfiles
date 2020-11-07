@@ -8,6 +8,7 @@ local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
 local gc = require("gears.color")
+local gs = require("gears.shape")
 local themes_path = "~/.config/awesome/themes/coolone/"
 
 local theme = {}
@@ -52,6 +53,10 @@ theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
 )
+local taglist_shape = function(cr, width, height)
+   gs.rounded_rect(cr, width, height, 2)
+end
+theme.taglist_shape_focus = taglist_shape
 
 -- Variables set for theming notifications:
 -- notification_font

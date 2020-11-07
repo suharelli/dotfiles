@@ -234,7 +234,7 @@ awful.screen.connect_for_each_screen(function(s)
         filter = awful.widget.taglist.filter.all,
         buttons = taglist_buttons,
         layout = wibox.layout.fixed.vertical,
-        widget_template = { 
+        widget_template = {
           {
             {
               {

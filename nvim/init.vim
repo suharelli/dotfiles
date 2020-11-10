@@ -25,7 +25,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'suharelli/vim-buftabline'
+Plug 'ap/vim-buftabline'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'

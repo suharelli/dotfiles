@@ -11,6 +11,7 @@ settings:
     https://www.google.com: true
   content.notifications:
     https://www.reddit.com: false
+    https://www.wildberries.ru: false
   content.register_protocol_handler:
     https://mail.google.com?extsrc=mailto&url=%25s: true
   fonts.default_family:
@@ -21,9 +22,9 @@ settings:
   fonts.statusbar:
     global: 10pt Droid Sans Mono
   fonts.tabs.selected:
-    global: 12pt monospace
+    global: 12pt default_family
   fonts.tabs.unselected:
-    global: 12pt monospace
+    global: 12pt default_family
   scrolling.smooth:
     global: true
   url.searchengines:

@@ -176,7 +176,7 @@ mytags[1] = {
     {name = "steam", layout = awful.layout.suit.tile, icon = beautiful.tagicons.steam, icon_only = true},
     {name = "editors", layout = awful.layout.suit.tile.bottom, icon = beautiful.tagicons.editors, icon_only = true},
     {name = "im", layout = awful.layout.suit.tile.left, icon = beautiful.tagicons.im, icon_only = true},
-    {name = "misc", layout = awful.layout.suit.tile, icon = beautiful.tagicons.misc, icon_only = true},
+    {name = "misc", layout = awful.layout.suit.spiral, icon = beautiful.tagicons.misc, icon_only = true},
     {name = "workspace", layout = awful.layout.suit.tile, icon = beautiful.tagicons.workspace, icon_only = true},
     {name = "torrents", layout = awful.layout.suit.tile, icon = beautiful.tagicons.torrents, icon_only = true},
 }

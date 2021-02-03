@@ -14,6 +14,8 @@ case "$INPUT" in
 	CMD="openmw-launcher" ;;
     nnn)
         CMD="alacritty -e nnn" ;;
+    phps)
+        CMD="~/idea/PhpStorm-203.7148.74/bin/phpstorm.sh" ;;
     *)
         CMD="$INPUT" ;;
 esac

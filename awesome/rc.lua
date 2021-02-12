@@ -46,7 +46,7 @@ end
 beautiful.init("~/.config/awesome/themes/coolone/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty -e fish"
+terminal = "alacritty"
 browser = "qutebrowser"
 editor = "nvim"
 terminal_run = terminal .. " -e "

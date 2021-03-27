@@ -620,6 +620,8 @@ awful.rules.rules = {
     properties = { screen = 1, tag = "im" } },
     { rule = { class = "brave-browser" },
     properties = { screen = 1, tag = "workspace" } },
+    { rule = { class = "jetbrains-phpstorm" },
+    properties = { screen = 1, tag = "editors" } },
 }
 -- }}}
 

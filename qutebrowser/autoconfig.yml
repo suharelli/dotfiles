@@ -10,6 +10,7 @@ settings:
     https://setstroika.ru: true
     https://www.google.com: true
   content.notifications:
+    https://coub.com: false
     https://www.reddit.com: false
     https://www.wildberries.ru: false
   content.register_protocol_handler:

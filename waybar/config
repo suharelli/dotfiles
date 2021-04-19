@@ -1,0 +1,52 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "left", // Waybar position (top|bottom|left|right)
+    "height": 32, // Waybar height
+    "width": 52, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["wlr/taskbar"],
+    "modules-right": ["tray", "sway/language", "clock"],
+    // Modules configuration
+     "sway/workspaces": {
+         "disable-scroll": true,
+         "disable-markup" : false,
+         "all-outputs": true,
+         "format": "{icon}",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+             "10": "",
+             "4": "",
+             "5": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 36,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "{:%Y-%m-%d | %H:%M}",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% "
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 36,
+        "tooltip": true,
+        "on-click": "activate",
+        "on-click-right": "close"
+    },
+}

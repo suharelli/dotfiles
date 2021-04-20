@@ -59,3 +59,8 @@ window#waybar.hidden {
     background-color: #ecf0f1;
     color: #2d3436;
 }
+
+#taskbar button.active {
+    background-color: #64727D;
+}
+

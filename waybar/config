@@ -4,26 +4,35 @@
     "height": 32, // Waybar height
     "width": 52, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces"],
-    "modules-center": ["wlr/taskbar"],
+    "modules-left": ["sway/workspaces", "wlr/taskbar"],
+    /* "modules-center": ["wlr/taskbar"], */
     "modules-right": ["tray", "sway/language", "clock"],
     // Modules configuration
-     "sway/workspaces": {
-         "disable-scroll": true,
-         "disable-markup" : false,
-         "all-outputs": true,
-         "format": "{icon}",
-         "format-icons": {
-             "1": "",
-             "2": "",
-             "3": "",
-             "10": "",
-             "4": "",
-             "5": "",
-             "focused": "",
-             "default": ""
-         }
-     },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "disable-markup" : false,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "10": "",
+            "4": "",
+            "5": "",
+            "focused": "",
+            "default": ""
+        },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": []
+        }
+    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -37,9 +46,6 @@
     },
     "clock": {
         "tooltip-format": "{:%Y-%m-%d}",
-    },
-    "cpu": {
-        "format": "{usage}% "
     },
     "wlr/taskbar": {
         "format": "{icon}",

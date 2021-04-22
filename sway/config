@@ -183,6 +183,11 @@ input "type:keyboard" {
     xkb_options grp:alt_shift_toggle
 }
 
+assign [app_id="telegram-desktop"] workspace 4
+assign [app_id="zoom"] workspace 4
+assign [class="Steam"] workspace 2
+assign [class="jetbrains-phpstorm"] workspace 3
+
 #
 # Status Bar:
 #

@@ -47,9 +47,8 @@ window#waybar.hidden {
     }
 }
 
-
 #tray {
-    background-color: #2980b9;
+    margin-bottom: 8px;
 }
 
 #idle_inhibitor {

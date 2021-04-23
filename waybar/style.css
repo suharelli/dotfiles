@@ -15,11 +15,13 @@ window#waybar.hidden {
     opacity: 0.0;
 }
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button {
-    padding: 4px;
-    margin: 0 0 8px 0;
+#workspaces button, #taskbar button {
+    padding: 8px 4px;
     background: transparent;
     color: #ffffff;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    border-radius: 1px;
 }
 
 #workspaces button.focused {

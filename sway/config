@@ -177,16 +177,24 @@ mode "resize" {
 }
 $bind $mod+r mode "resize"
 
+$bind $mod+Print exec grim -g "$(slurp)" - | wl-copy
+$bind Print exec grim ~/screenshots/$(date +'%s_grim.png')
 
+# layout
 input "type:keyboard" {
     xkb_layout us,ru
     xkb_options grp:alt_shift_toggle
 }
 
+# windows to workspace matching
 assign [app_id="telegram-desktop"] workspace 4
 assign [app_id="zoom"] workspace 4
 assign [class="Steam"] workspace 2
 assign [class="jetbrains-phpstorm"] workspace 3
+
+# floating windows
+for_window [class="vlc"] floating enable
+for_window [class="Sxiv"] floating enable
 
 #
 # Status Bar:

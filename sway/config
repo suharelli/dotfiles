@@ -207,3 +207,5 @@ bar {
 include /etc/sway/config.d/*
 
 # exec waybar
+exec ~/.config/sway/transparency.py
+

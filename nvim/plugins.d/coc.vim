@@ -40,3 +40,5 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>rr <Plug>(coc-rename)
+
+autocmd BufWritePost *.elm silent! call CocAction('format')

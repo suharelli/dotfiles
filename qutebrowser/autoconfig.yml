@@ -9,8 +9,9 @@ settings:
   content.geolocation:
     https://setstroika.ru: true
     https://www.google.com: true
-  content.notifications:
+  content.notifications.enabled:
     https://coub.com: false
+    https://www.dns-shop.ru: false
     https://www.reddit.com: false
     https://www.wildberries.ru: false
   content.register_protocol_handler:

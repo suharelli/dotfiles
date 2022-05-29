@@ -6,19 +6,19 @@ window:
   dynamic_title: true
 font:
   normal:
-    family: Hack NF
+    family: Hack
     style: Regular
 
   bold:
-    family: Hack NF
+    family: Hack
     style: Bold
 
   italic:
-    family: Hack NF
+    family: Hack
     style: Italic
 
   bold_italic:
-    family: Hack NF
+    family: Hack
     style: Bold Italic
   size: 12.0
 draw_bold_text_with_bright_colors: true

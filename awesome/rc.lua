@@ -365,7 +365,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
        {description = "show main menu", group = "awesome"}),
 
-    awful.key({ modkey,           }, "p", function () awful.spawn("/home/cyrax/.config/awesome/scripts/dmenu_run -h 48 -l 10 -fn 'Droid-Sans-Mono-24:normal'") end),
+    awful.key({ modkey,           }, "p", function () awful.spawn("/home/cyrax/.config/awesome/scripts/dmenu_run -c -h 48 -l 10 -fn 'Droid-Sans-Mono-24:normal'") end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
@@ -412,7 +412,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
-    awful.key({ modkey,           }, "e", function () awful.spawn("pcmanfm")      end,
+    awful.key({ modkey,           }, "e", function () awful.spawn("thunar")      end,
               {description = "File manager", group = "client"}),
 
     awful.key({ modkey, "Shift"   }, "s", function () awful.spawn(terminal_run .. "speedtest")      end,
@@ -693,3 +693,9 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
+-- autostart
+awful.util.spawn_with_shell("setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle")
+awful.util.spawn_with_shell("picom -b --unredir-if-possible --experimental-backends --use-damage --glx-no-stencil")
+awful.util.spawn_with_shell("g810-led -a ffffff")

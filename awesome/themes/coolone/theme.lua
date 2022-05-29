@@ -130,16 +130,17 @@ theme.awesome_icon = theme_assets.awesome_icon(
 
 theme.tagicons = {}
 
-local icons_path = "/usr/share/icons/Adwaita/64x64/"
+-- todo why does not it accept path in a form relative to ~/ ???
+local icons_path = "/home/cyrax/.config/awesome/themes/coolone/icons/"
 local recolor_icons = "#ffffff"
-theme.tagicons.main = gc.recolor_image(icons_path.."places/user-home-symbolic.symbolic.png", recolor_icons)
-theme.tagicons.steam = gc.recolor_image(icons_path.."categories/applications-games-symbolic.symbolic.png", recolor_icons)
-theme.tagicons.editors = gc.recolor_image(icons_path.."apps/text-editor-symbolic.symbolic.png", recolor_icons)
-theme.tagicons.im = gc.recolor_image(icons_path.."status/user-invisible-symbolic.symbolic.png", recolor_icons)
-theme.tagicons.im = gc.recolor_image(icons_path.."actions/mail-send-symbolic.symbolic.png", recolor_icons)
-theme.tagicons.misc = gc.recolor_image(icons_path.."apps/utilities-terminal-symbolic.symbolic.png", recolor_icons)
-theme.tagicons.workspace = gc.recolor_image(icons_path.."apps/accessories-calculator-symbolic.symbolic.png", recolor_icons)
-theme.tagicons.torrents = gc.recolor_image(icons_path.."emblems/emblem-shared-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.main = gc.recolor_image(icons_path.."user-home-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.steam = gc.recolor_image(icons_path.."applications-games-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.editors = gc.recolor_image(icons_path.."text-editor-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.im = gc.recolor_image(icons_path.."user-invisible-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.im = gc.recolor_image(icons_path.."mail-send-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.misc = gc.recolor_image(icons_path.."utilities-terminal-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.workspace = gc.recolor_image(icons_path.."accessories-calculator-symbolic.symbolic.png", recolor_icons)
+theme.tagicons.torrents = gc.recolor_image(icons_path.."emblem-shared-symbolic.symbolic.png", recolor_icons)
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.

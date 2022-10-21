@@ -1,7 +1,7 @@
 {
-    "layer": "top", // Waybar at top layer
+    "layer": "bottom", // Waybar at top layer
     "position": "left", // Waybar position (top|bottom|left|right)
-    "height": 32, // Waybar height
+    "height": 1200, // Waybar height
     "width": 52, // Waybar width
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "wlr/taskbar"],
@@ -39,7 +39,13 @@
         "spacing": 10
     },
     "clock": {
-        "tooltip-format": "{:%Y-%m-%d}",
+        "tooltip-format": "{calendar}",
+        "locale": "ru_RU.utf8",
+        "today-format": "<span color='#ff6699'><b><u>{}</u></b></span>",
+        "calendar-weeks-pos": "right",
+        "format-calendar": "<span color='#ecc6d9'><b>{}</b></span>",
+        "format-calendar-weeks": "<span color='#99ffdd'><b>W{:%V}</b></span>",
+        "format-calendar-weekdays": "<span color='#ffcc66'><b>{}</b></span>"
     },
     "wlr/taskbar": {
         "format": "{icon}",

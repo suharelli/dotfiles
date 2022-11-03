@@ -27,6 +27,9 @@
             "default": ""
         }
     },
+    "sway/language": {
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -41,11 +44,10 @@
     "clock": {
         "tooltip-format": "{calendar}",
         "locale": "ru_RU.utf8",
-        "today-format": "<span color='#ff6699'><b><u>{}</u></b></span>",
-        "calendar-weeks-pos": "right",
-        "format-calendar": "<span color='#ecc6d9'><b>{}</b></span>",
-        "format-calendar-weeks": "<span color='#99ffdd'><b>W{:%V}</b></span>",
-        "format-calendar-weekdays": "<span color='#ffcc66'><b>{}</b></span>"
+        "today-format": "<span color='#ff6699'><b>{}</b></span>",
+        /* "format-calendar": "<span color='#ecc6d9'><b>{}</b></span>", */
+        /* "format-calendar-weeks": "<span color='#99ffdd'><b>W{:%V}</b></span>", */
+        /* "format-calendar-weekdays": "<span color='#ffcc66'><b>{}</b></span>" */
     },
     "wlr/taskbar": {
         "format": "{icon}",

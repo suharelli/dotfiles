@@ -29,7 +29,9 @@ set $bind bindsym --to-code
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg background.jpg fill
 
-default_border none
+default_border pixel 1
+hide_edge_borders smart
+
 gaps inner 8
 gaps top -8
 gaps left -8
@@ -63,7 +65,9 @@ gaps bottom -8
 
     $bind $mod+Shift+e exec thunar
     # Exit sway (logs you out of your Wayland session)
-    $bind $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    # $bind $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    $bind $mod+Shift+q exec swaymsg exit
+    $bind $mod+Ctrl+q exec loginctl poweroff
 #
 # Moving around:
 #
@@ -185,6 +189,8 @@ input "type:keyboard" {
     xkb_layout us,ru
     xkb_options grp:alt_shift_toggle
 }
+#numlock on by default
+input type:keyboard xkb_numlock enabled
 
 # windows to workspace matching
 assign [app_id="telegram-desktop"] workspace 4
@@ -207,5 +213,6 @@ bar {
 include /etc/sway/config.d/*
 
 # exec waybar
-exec ~/.config/sway/transparency.py
+# exec ~/.config/sway/transparency.py
+exec g810-led -a ffffff
 

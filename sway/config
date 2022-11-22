@@ -30,6 +30,7 @@ set $bind bindsym --to-code
 output * bg background.jpg fill
 
 default_border pixel 1
+default_floating_border none
 hide_edge_borders smart
 
 gaps inner 8
@@ -50,7 +51,8 @@ gaps bottom -8
     $bind $mod+Shift+c kill
 
     # Start your launcher
-    $bind $mod+p exec $menu
+    # $bind $mod+p exec $menu
+    $bind $mod+p exec ulauncher
     $bind $mod+Shift+p exec $classic_menu
 
     # Drag floating windows by holding down $mod and left mouse button.

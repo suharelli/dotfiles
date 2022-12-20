@@ -1,5 +1,6 @@
 awesome/lain
 nvim/coc-settings.json
+nvim.vim/coc-settings.json
 qutebrowser/qsettings
 .nvimlog
 

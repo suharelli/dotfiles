@@ -69,6 +69,7 @@ return require('packer').startup(function(use)
   use 'David-Kunz/jester'
   use 'terrortylor/nvim-comment'
   use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+  use 'airblade/vim-gitgutter'
 
 
 end)

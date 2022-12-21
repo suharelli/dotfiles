@@ -1,20 +1,13 @@
-local nvim_tree_events = require('nvim-tree.events')
-local bufferline_api = require('bufferline.api')
+require("bufferline").setup{
+    options = {
+        numbers = "buffer_id",
+        separator_style = "slant",
+        middle_mouse_command = "bdelete! %d",
+        diagnostics = "nvim_lsp",
+        diagnostics_indicator = function(count, level)
+            local icon = level:match("error") and " " or " "
+            return " " .. icon .. count
+        end
 
-local function get_tree_size()
-  return require'nvim-tree.view'.View.width
-end
-
-nvim_tree_events.subscribe('TreeOpen', function()
-  bufferline_api.set_offset(get_tree_size())
-end)
-
-nvim_tree_events.subscribe('Resize', function()
-  bufferline_api.set_offset(get_tree_size())
-end)
-
-nvim_tree_events.subscribe('TreeClose', function()
-  bufferline_api.set_offset(0)
-end)
-
-
+    }
+}

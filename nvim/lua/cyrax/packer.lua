@@ -21,13 +21,24 @@ return require('packer').startup(function(use)
 	  tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
+  -- use({
+  -- 	  'rose-pine/neovim',
+  -- 	  as = 'rose-pine',
+  -- 	  config = function()
+  -- 		  vim.cmd('colorscheme rose-pine')
+  -- 	  end
+  -- })
+  --
   use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
+      'sainnhe/sonokai',
+      as = 'sonokai',
+      config = function()
+          vim.g.sonokai_style = 'atlantis'
+          vim.g.sonokai_better_performance = true
+          vim.cmd('colorscheme sonokai')
+      end
   })
+
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('itchyny/lightline.vim')

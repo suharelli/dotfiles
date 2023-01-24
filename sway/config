@@ -20,6 +20,7 @@ set $term alacritty
 # on the original workspace that the command was run on.
 set $dmenu_args -h 48 -l 10 -fn 'Droid-Sans-Mono-24:normal'
 set $classic_menu dmenu_path | dmenu $dmenu_args | xargs swaymsg exec --
+set $menu ~/dotfiles/awesome/scripts/dmenu_run $dmenu_args | xargs swaymsg exec --
 
 set $bind bindsym --to-code
 
@@ -50,7 +51,7 @@ gaps bottom -8
     $bind $mod+Shift+c kill
 
     # Start your launcher
-    $bind $mod+p exec ulauncher
+    $bind $mod+p exec $menu
     $bind $mod+Shift+p exec $classic_menu
 
     # Drag floating windows by holding down $mod and left mouse button.

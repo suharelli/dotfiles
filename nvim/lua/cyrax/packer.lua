@@ -21,14 +21,6 @@ return require('packer').startup(function(use)
 	  tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
-  -- use({
-  -- 	  'rose-pine/neovim',
-  -- 	  as = 'rose-pine',
-  -- 	  config = function()
-  -- 		  vim.cmd('colorscheme rose-pine')
-  -- 	  end
-  -- })
-  --
   use({
       'sainnhe/sonokai',
       as = 'sonokai',
@@ -72,16 +64,17 @@ return require('packer').startup(function(use)
   use 'airblade/vim-gitgutter'
 
   use {
-  "folke/trouble.nvim",
-  requires = "nvim-tree/nvim-web-devicons",
-  config = function()
-    require("trouble").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  end
-}
+      "folke/trouble.nvim",
+      requires = "nvim-tree/nvim-web-devicons",
+      config = function()
+          require("trouble").setup {
+              -- your configuration comes here
+              -- or leave it empty to use the default settings
+              -- refer to the configuration section below
+          }
+      end
+  }
 
+  use 'jiangmiao/auto-pairs'
 
 end)

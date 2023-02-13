@@ -194,7 +194,8 @@ input "type:keyboard" {
 input type:keyboard xkb_numlock enabled
 
 # windows to workspace matching
-assign [app_id="telegram-desktop"] workspace 4
+assign [app_id="org.telegram.desktop"] workspace 4
+assign [class="Brave-browser"] workspace 6
 assign [app_id="zoom"] workspace 4
 assign [class="Steam"] workspace 2
 assign [class="jetbrains-phpstorm"] workspace 3
@@ -216,4 +217,7 @@ include /etc/sway/config.d/*
 # exec waybar
 # exec ~/.config/sway/transparency.py
 exec g810-led -a ffffff
+
+exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
+exec mako
 

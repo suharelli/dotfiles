@@ -28,3 +28,5 @@ vim.opt.updatetime = 50
 
 vim.opt.splitbelow = true
 
+vim.opt.wrap = true
+vim.opt.linebreak = true

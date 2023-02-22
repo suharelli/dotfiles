@@ -187,7 +187,7 @@ $bind Print exec grim ~/screenshots/$(date +'%s_grim.png')
 
 # layout
 input "type:keyboard" {
-    xkb_layout us,ru
+    xkb_layout us,ru,es
     xkb_options grp:alt_shift_toggle
 }
 #numlock on by default

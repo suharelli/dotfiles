@@ -199,6 +199,7 @@ assign [class="Brave-browser"] workspace 6
 assign [app_id="zoom"] workspace 4
 assign [class="Steam"] workspace 2
 assign [class="jetbrains-phpstorm"] workspace 3
+assign [class="Tor Browser"] workspace 8
 
 # floating windows
 for_window [class="vlc"] floating enable

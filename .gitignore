@@ -3,4 +3,4 @@ nvim/coc-settings.json
 nvim.vim/coc-settings.json
 qutebrowser/qsettings
 .nvimlog
-
+nvim/plugin/packer_compiled.lua

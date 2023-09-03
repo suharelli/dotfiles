@@ -77,4 +77,6 @@ return require('packer').startup(function(use)
 
   -- use 'jiangmiao/auto-pairs'
 
+  use '~/projects/nvim/run-config'
+
 end)

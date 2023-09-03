@@ -21,6 +21,7 @@ set $term alacritty
 set $dmenu_args -h 48 -l 10 -fn 'Droid-Sans-Mono-24:normal'
 set $classic_menu dmenu_path | dmenu $dmenu_args | xargs swaymsg exec --
 set $menu ~/dotfiles/awesome/scripts/dmenu_run $dmenu_args | xargs swaymsg exec --
+set $passmenu ~/dotfiles/sway/passmenu.sh $dmenu_args
 
 set $bind bindsym --to-code
 
@@ -53,6 +54,7 @@ gaps bottom -8
     # Start your launcher
     $bind $mod+p exec $menu
     $bind $mod+Shift+p exec $classic_menu
+    $bind $mod+Ctrl+p exec $passmenu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -187,7 +189,7 @@ $bind Print exec grim ~/screenshots/$(date +'%s_grim.png')
 
 # layout
 input "type:keyboard" {
-    xkb_layout us,ru,es
+    xkb_layout us,ru
     xkb_options grp:alt_shift_toggle
 }
 #numlock on by default
@@ -197,7 +199,7 @@ input type:keyboard xkb_numlock enabled
 assign [app_id="org.telegram.desktop"] workspace 4
 assign [class="Brave-browser"] workspace 6
 assign [app_id="zoom"] workspace 4
-assign [class="Steam"] workspace 2
+assign [class="steam"] workspace 2
 assign [class="jetbrains-phpstorm"] workspace 3
 assign [class="Tor Browser"] workspace 8
 

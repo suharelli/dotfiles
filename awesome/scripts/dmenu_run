@@ -8,14 +8,10 @@ test -n "$INPUT"
 
 # aliases
 case "$INPUT" in
-    chrome)
-        CMD="chromium --disk-cache-dir=/tmp/cache" ;;
     morrowind)
 	CMD="openmw-launcher" ;;
     nnn)
         CMD="alacritty -e nnn" ;;
-    phps)
-        CMD="~/idea/PhpStorm-203.7148.74/bin/phpstorm.sh" ;;
     *)
         CMD="$INPUT" ;;
 esac

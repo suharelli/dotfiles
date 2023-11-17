@@ -9,8 +9,22 @@ vim.opt.termguicolors = true
 require("nvim-tree").setup({
 	open_on_setup = true,
 	view = {
-        	adaptive_size = true,
+        	adaptive_size = false,
+            width = 30,
+            mappings = {
+                list = {
+                    {key = "l", action = "edit"},
+                    {key = "h", action = "close_node"},
+                }
+            },
 	},
+    update_focused_file = {
+        enable = true,
+        debounce_delay = 15,
+        update_root = true,
+        ignore_list = {},
+    },
 })
+
 
 vim.keymap.set("", "<F8>", ":NvimTreeToggle<CR>")
